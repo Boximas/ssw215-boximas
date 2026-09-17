@@ -8,6 +8,7 @@ engineering student.
 - The page MUST NOT load external CSS frameworks or CDNs (no Bootstrap, no Tailwind).
 - The avatar image MUST use the relative path `./assets/avatar.jpg`.
 - The layout MUST collapse into a single vertical column on screens narrower than 768px.
+- The background image MUST use the relative path `./assets/background.jpg`.
 ## 3. UI Content & Interface Contract
 - Hero header: my full name "Charles Avery", the subtitle "Student as Stevens Institute of Technology.", and
 this bio: "Software Engineering student at Stevens Institute of Technology. Likes Software Engineering, Metal Music, History and more.".
@@ -15,6 +16,8 @@ this bio: "Software Engineering student at Stevens Institute of Technology. Like
 - Projects section with id="projects": lists these items: Infinite version of the web game Chronogram.
 - Social link: GitHub (https://github.com/Boximas) MUST open in a new tab
 (target="_blank").
+- All text MUST be contained within dark (#2e2825), rounded boxed sections
+- Header text MUST be white (#ffffff) and any sub text should be a light grey (#bfbfbf)
 ## 4. Acceptance Checklist
 - [x] Valid semantic HTML5: the page uses <header>, <main>, and <footer>.
 - [x] The avatar image has width, height, and alt attributes.
