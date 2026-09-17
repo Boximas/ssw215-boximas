@@ -16,10 +16,10 @@ this bio: "Software Engineering student at Stevens Institute of Technology. Like
 - Social link: GitHub (https://github.com/Boximas) MUST open in a new tab
 (target="_blank").
 ## 4. Acceptance Checklist
-- [ ] Valid semantic HTML5: the page uses <header>, <main>, and <footer>.
-- [ ] The avatar image has width, height, and alt attributes.
-- [ ] No horizontal scrollbar when the browser is narrowed to 375px.
-- [ ] The GitHub link opens in a new tab and has rel="noopener".
-- [ ] No placeholder links: href="#" appears nowhere.
+- [x] Valid semantic HTML5: the page uses <header>, <main>, and <footer>.
+- [x] The avatar image has width, height, and alt attributes.
+- [x] No horizontal scrollbar when the browser is narrowed to 375px.
+- [x] The GitHub link opens in a new tab and has rel="noopener".
+- [x] No placeholder links: href="#" appears nowhere.
 ## 5. Audit Protocol
 - Inspect the generated code line by line with `git diff --staged` before committing.

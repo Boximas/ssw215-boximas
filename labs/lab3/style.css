@@ -1,0 +1,161 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f4f1eb;
+  --panel: #f9f7f3;
+  --text: #1f2430;
+  --muted: #4b5563;
+  --accent: #3a5a8c;
+  --accent-dark: #1f3d63;
+  --border: #d9d1c7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.hero {
+  padding: 4rem 1.5rem 2rem;
+}
+
+.hero-content {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent);
+  flex-shrink: 0;
+}
+
+.hero-copy {
+  flex: 1;
+}
+
+h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--accent-dark);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.bio {
+  margin: 1rem 0 1.5rem;
+  color: var(--muted);
+  max-width: 42rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background 0.2s ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  background: var(--accent-dark);
+}
+
+main {
+  padding: 0 1.5rem 2rem;
+}
+
+.projects {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+}
+
+.projects h2 {
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+.projects ul {
+  margin: 0;
+  padding-left: 1.4rem;
+}
+
+.projects li {
+  font-size: 1.05rem;
+}
+
+.site-footer {
+  padding: 1.5rem 1.5rem 2.5rem;
+  text-align: center;
+}
+
+.site-footer a {
+  color: var(--accent-dark);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.25rem;
+  }
+
+  .avatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .bio {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .button {
+    width: 100%;
+    text-align: center;
+  }
+}
