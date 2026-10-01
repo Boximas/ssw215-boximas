@@ -1,0 +1,180 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --page-bg: #0d0b0a;
+  --panel-bg: #2e2825;
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --text-main: #ffffff;
+  --text-sub: #bfbfbf;
+  --button-bg: #e7e7e7;
+  --button-text: #2e2825;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--page-bg);
+  background-image: url("./assets/background.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.page-shell {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 2.5rem;
+}
+
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 22px;
+  color: var(--text-main);
+}
+
+.hero {
+  padding: 1.5rem;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.hero-copy {
+  flex: 1;
+}
+
+h1 {
+  margin: 0 0 0.5rem;
+  color: var(--text-main);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--text-sub);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.bio {
+  margin: 1rem 0 1.5rem;
+  color: var(--text-sub);
+  max-width: 42rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.button:hover,
+.button:focus-visible {
+  filter: brightness(0.95);
+}
+
+main {
+  margin-top: 1.5rem;
+}
+
+.projects {
+  padding: 1.5rem 2rem;
+}
+
+.projects h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--text-main);
+  font-size: 1.8rem;
+}
+
+.projects ul {
+  margin: 0;
+  padding-left: 1.4rem;
+  color: var(--text-sub);
+}
+
+.projects li {
+  font-size: 1.05rem;
+}
+
+.site-footer {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+}
+
+.site-footer a {
+  color: var(--text-main);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+  .page-shell {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+  }
+
+  .hero {
+    padding: 1.25rem;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .avatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .bio {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .button {
+    width: 100%;
+    text-align: center;
+  }
+}
