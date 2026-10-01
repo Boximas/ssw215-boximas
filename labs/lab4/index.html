@@ -7,8 +7,13 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div class="page-shell">
-      <header class="hero panel">
+    <header class="site-header">
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#projects">Projects</a>
+        <a href="https://github.com/Boximas" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+
+      <section class="hero panel" aria-labelledby="page-title">
         <div class="hero-content">
           <img
             class="avatar"
@@ -19,7 +24,7 @@
           />
 
           <div class="hero-copy">
-            <h1>Charles Avery</h1>
+            <h1 id="page-title">Charles Avery</h1>
             <p class="subtitle">Student as Stevens Institute of Technology.</p>
             <p class="bio">
               Software Engineering student at Stevens Institute of Technology.
@@ -28,20 +33,22 @@
             <a class="button" href="#projects">See my projects</a>
           </div>
         </div>
-      </header>
+      </section>
+    </header>
 
-      <main>
-        <section class="projects panel" id="projects">
-          <h2>Projects</h2>
-          <ul>
-            <li>Infinite version of the web game Chronogram.</li>
-          </ul>
-        </section>
-      </main>
+    <main>
+      <section class="projects panel" id="projects" aria-labelledby="projects-heading">
+        <h2 id="projects-heading">Projects</h2>
+        <div class="card-list">
+          <article class="card">
+            <p>Infinite version of the web game Chronogram.</p>
+          </article>
+        </div>
+      </section>
+    </main>
 
-      <footer class="site-footer panel">
-        <a href="https://github.com/Boximas" target="_blank" rel="noopener">GitHub</a>
-      </footer>
-    </div>
+    <footer class="site-footer panel">
+      <a href="https://github.com/Boximas" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </footer>
   </body>
 </html>

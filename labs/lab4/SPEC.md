@@ -30,11 +30,11 @@ this bio: "Software Engineering student at Stevens Institute of Technology. Like
 - Each project MUST be an <article class="card"> inside a container that uses display:
 flex, flex-wrap: wrap and gap.
 ## 4. Acceptance Checklist
-- [ ] Exactly one <h1>, one <header>, one <nav>, one <main>, one <footer>.
-- [ ] Every project is an <article class="card"> inside a flex container with gap.
-- [ ] style.css begins with the box-sizing reset.
-- [ ] No inline style="..." attributes anywhere in index.html.
-- [ ] No ID selectors (#something) in style.css.
-- [ ] No horizontal scrollbar when the browser is narrowed to 375px.
+- [x] Exactly one <h1>, one <header>, one <nav>, one <main>, one <footer>.
+- [x] Every project is an <article class="card"> inside a flex container with gap.
+- [x] style.css begins with the box-sizing reset.
+- [x] No inline style="..." attributes anywhere in index.html.
+- [x] No ID selectors (#something) in style.css.
+- [x] No horizontal scrollbar when the browser is narrowed to 375px.
 ## 5. Audit Protocol
 - Inspect the generated code line by line with `git diff --staged` before committing.

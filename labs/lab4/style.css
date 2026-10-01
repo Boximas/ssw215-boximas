@@ -1,6 +1,4 @@
-* {
-  box-sizing: border-box;
-}
+*, *::before, *::after { box-sizing: border-box; }
 
 :root {
   --page-bg: #0d0b0a;
@@ -22,31 +20,73 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: var(--page-bg);
   background-image: url("./assets/background.jpg");
-  background-size: cover;
-  background-position: center center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-position: center top;
+  background-size: cover;
   color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden;
 }
 
+a {
+  color: inherit;
+}
+
 img {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
-.page-shell {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem 1.25rem 2.5rem;
+.site-header,
+.site-footer,
+main,
+.hero,
+.projects {
+  width: calc(100% - 2rem);
+  max-width: 62.5rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.panel {
+.site-header,
+.site-footer,
+.hero,
+.projects {
   background: var(--panel-bg);
-  border: 1px solid var(--panel-border);
-  border-radius: 22px;
+  border: 0.0625rem solid var(--panel-border);
+  border-radius: 1.5rem;
   color: var(--text-main);
+}
+
+.site-header {
+  margin-top: 2rem;
+  padding: 1rem 1.25rem 0;
+}
+
+.site-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 1rem;
+}
+
+.site-nav a,
+.site-footer a {
+  color: var(--text-main);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible,
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  text-decoration: underline;
 }
 
 .hero {
@@ -60,8 +100,8 @@ img {
 }
 
 .avatar {
-  width: 180px;
-  height: 180px;
+  width: 11.25rem;
+  height: 11.25rem;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -93,7 +133,7 @@ h1 {
 
 .button {
   display: inline-block;
-  padding: 0.8rem 1.4rem;
+  padding: 0.8rem 1.5rem;
   border-radius: 999px;
   background: var(--button-bg);
   color: var(--button-text);
@@ -111,23 +151,34 @@ main {
 }
 
 .projects {
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 1.75rem;
 }
 
 .projects h2 {
   margin-top: 0;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
   color: var(--text-main);
-  font-size: 1.8rem;
+  font-size: 1.75rem;
 }
 
-.projects ul {
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card {
+  flex: 1 1 15rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 0.0625rem solid var(--panel-border);
+  border-radius: 1rem;
+  color: var(--text-main);
+}
+
+.card p {
   margin: 0;
-  padding-left: 1.4rem;
   color: var(--text-sub);
-}
-
-.projects li {
   font-size: 1.05rem;
 }
 
@@ -135,23 +186,25 @@ main {
   margin-top: 1.5rem;
   padding: 1.25rem 1.5rem;
   text-align: center;
-}
-
-.site-footer a {
-  color: var(--text-main);
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.site-footer a:hover,
-.site-footer a:focus-visible {
-  text-decoration: underline;
+  margin-bottom: 2rem;
 }
 
 @media (max-width: 767px) {
-  .page-shell {
-    padding-left: 0.9rem;
-    padding-right: 0.9rem;
+  .site-header,
+  .site-footer,
+  main,
+  .hero,
+  .projects {
+    width: calc(100% - 1.25rem);
+  }
+
+  .site-header {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+  }
+
+  .site-nav {
+    flex-direction: column;
   }
 
   .hero {
@@ -164,8 +217,8 @@ main {
   }
 
   .avatar {
-    width: 150px;
-    height: 150px;
+    width: 9.375rem;
+    height: 9.375rem;
   }
 
   .bio {
@@ -176,5 +229,9 @@ main {
   .button {
     width: 100%;
     text-align: center;
+  }
+
+  .card-list {
+    flex-direction: column;
   }
 }
