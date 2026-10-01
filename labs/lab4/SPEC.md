@@ -9,6 +9,10 @@ engineering student.
 - The avatar image MUST use the relative path `./assets/avatar.jpg`.
 - The layout MUST collapse into a single vertical column on screens narrower than 768px.
 - The background image MUST use the relative path `./assets/background.jpg`.
+- style.css MUST begin with the universal reset: `*, *::before, *::after { box-sizing:
+border-box; }`.
+- Spacing and font sizes MUST use rem. px MAY be used only for borders.
+- Styling MUST use class selectors. ID selectors MUST NOT be used for styling.
 ## 3. UI Content & Interface Contract
 - Hero header: my full name "Charles Avery", the subtitle "Student as Stevens Institute of Technology.", and
 this bio: "Software Engineering student at Stevens Institute of Technology. Likes Software Engineering, Metal Music, History and more.".
@@ -19,11 +23,18 @@ this bio: "Software Engineering student at Stevens Institute of Technology. Like
 - All text MUST be contained within dark (#2e2825), rounded boxed areas
 - Header text MUST be white (#ffffff) and any sub text should be a light grey (#bfbfbf)
 - The Background image MUST crop horizontally and fill the screen vertically
+- The page MUST use semantic landmarks: one <header>, one <nav>, one <main>, one
+<footer>, and each content group inside its own <section> with a heading.
+- There MUST be exactly one <h1>, and heading levels MUST NOT skip (h1 then h2 then h3).
+- <nav> MUST contain a link to the projects section and a link to my GitHub profile.
+- Each project MUST be an <article class="card"> inside a container that uses display:
+flex, flex-wrap: wrap and gap.
 ## 4. Acceptance Checklist
-- [ ] Valid semantic HTML5: the page uses <header>, <main>, and <footer>.
-- [ ] The avatar image has width, height, and alt attributes.
+- [ ] Exactly one <h1>, one <header>, one <nav>, one <main>, one <footer>.
+- [ ] Every project is an <article class="card"> inside a flex container with gap.
+- [ ] style.css begins with the box-sizing reset.
+- [ ] No inline style="..." attributes anywhere in index.html.
+- [ ] No ID selectors (#something) in style.css.
 - [ ] No horizontal scrollbar when the browser is narrowed to 375px.
-- [ ] The GitHub link opens in a new tab and has rel="noopener".
-- [ ] No placeholder links: href="#" appears nowhere.
 ## 5. Audit Protocol
 - Inspect the generated code line by line with `git diff --staged` before committing.
