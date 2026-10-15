@@ -1,0 +1,285 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  --page-bg: #0d0b0a;
+  --panel-bg: #2e2825;
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --text-main: #ffffff;
+  --text-sub: #bfbfbf;
+  --button-bg: #e7e7e7;
+  --button-text: #2e2825;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--page-bg);
+  background-image: url("./assets/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.site-header,
+.site-footer,
+main,
+.hero,
+.projects {
+  width: calc(100% - 2rem);
+  max-width: 62.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.site-header,
+.site-footer,
+.hero,
+.projects {
+  background: var(--panel-bg);
+  border: 0.0625rem solid var(--panel-border);
+  border-radius: 1.5rem;
+  color: var(--text-main);
+}
+
+.site-header {
+  margin-top: 2rem;
+  padding: 1rem 1.25rem 0;
+}
+
+.site-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem; /* hand-edited by Charles Avery */
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 1rem;
+}
+
+.site-nav a,
+.site-footer a {
+  color: var(--text-main);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible,
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  text-decoration: underline;
+}
+
+.hero {
+  padding: 1.5rem;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.avatar {
+  width: 11.25rem;
+  height: 11.25rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.hero-copy {
+  flex: 1;
+}
+
+h1 {
+  margin: 0 0 0.5rem;
+  color: var(--text-main);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--text-sub);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.bio {
+  margin: 1rem 0 1.5rem;
+  color: var(--text-sub);
+  max-width: 42rem;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border: 0.0625rem solid transparent;
+  border-radius: 999px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease, opacity 0.15s ease;
+}
+
+.button:hover {
+  filter: brightness(0.92);
+  transform: translateY(-0.0625rem);
+}
+
+.button:focus-visible {
+  outline: 0.1875rem solid rgba(255, 255, 255, 0.9);
+  outline-offset: 0.125rem;
+  box-shadow: 0 0 0 0.1875rem rgba(255, 255, 255, 0.25);
+}
+
+.button:active {
+  filter: brightness(0.8);
+  transform: translateY(0);
+}
+
+.button:disabled,
+.button-secondary:disabled {
+  background: #9a9694;
+  color: rgba(46, 40, 37, 0.7);
+  border-color: rgba(46, 40, 37, 0.2);
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+  transform: none;
+}
+
+.button:disabled:hover,
+.button-secondary:disabled:hover {
+  filter: none;
+  transform: none;
+}
+
+.button-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-sub);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+main {
+  margin-top: 1.5rem;
+}
+
+.projects {
+  padding: 1.5rem 1.75rem;
+}
+
+.projects h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+  font-size: 1.75rem;
+}
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem; /* hand-edited by Charles Avery */
+}
+
+.card {
+  flex: 1 1 15rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 0.0625rem solid var(--panel-border);
+  border-radius: 1rem;
+  color: var(--text-main);
+}
+/* hand-edited by Charles Avery */
+.featured {
+background-color: #1d3f28;
+}
+
+.card p {
+  margin: 0;
+  color: var(--text-sub);
+  font-size: 1.05rem;
+}
+
+.site-footer {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 767px) {
+  .site-header,
+  .site-footer,
+  main,
+  .hero,
+  .projects {
+    width: calc(100% - 1.25rem);
+  }
+
+  .site-header {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+  }
+
+  .site-nav {
+    flex-direction: column;
+  }
+
+  .hero {
+    padding: 1.25rem;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .avatar {
+    width: 9.375rem;
+    height: 9.375rem;
+  }
+
+  .bio {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .card-list {
+    flex-direction: column;
+  }
+}
