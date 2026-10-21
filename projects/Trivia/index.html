@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mystery Figure</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <h1>Mystery Figure</h1>
+      </div>
+      <div class="stats" aria-label="Session statistics">
+        <div class="stat">
+          <span class="stat__label">Played</span>
+          <strong id="stat-played">0</strong>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Correct</span>
+          <strong id="stat-correct">0</strong>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Streak</span>
+          <strong id="stat-streak">0</strong>
+        </div>
+      </div>
+    </header>
+
+    <main id="game" data-status="idle">
+      <div class="game-layout">
+        <section class="panel panel--game" aria-labelledby="game-heading">
+          <h2 id="game-heading" class="sr-only">Mystery round</h2>
+
+          <section id="start-panel" class="panel-surface start-panel">
+            <h3>Start a new mystery</h3>
+            <p>
+              A historical figure is waiting behind a trail of clues. Read the hints,
+              make your best guess, and see if you can crack the case.
+            </p>
+            <button id="start-btn" type="button" class="btn btn--primary">Start Game</button>
+          </section>
+
+          <div id="progress" class="progress" data-revealed="0" data-total="6" aria-live="polite">
+            <div class="progress__bar" aria-hidden="true">
+              <div class="progress__fill"></div>
+            </div>
+            <div class="progress__dots" aria-hidden="true">
+              <span class="progress__dot"></span>
+              <span class="progress__dot"></span>
+              <span class="progress__dot"></span>
+              <span class="progress__dot"></span>
+              <span class="progress__dot"></span>
+              <span class="progress__dot"></span>
+            </div>
+            <p class="progress__label">Clue 0 of 6</p>
+          </div>
+
+          <ol id="clue-list" class="clue-list" aria-live="polite"></ol>
+
+          <ul id="guess-list" class="guess-list" aria-live="polite"></ul>
+
+          <form id="guess-form" class="guess-form" novalidate>
+            <label for="guess-input">Your guess</label>
+            <div class="guess-row">
+              <input
+                id="guess-input"
+                class="guess-input"
+                type="text"
+                maxlength="60"
+                autocomplete="off"
+                placeholder="Type a name"
+                disabled
+              />
+              <button id="guess-btn" type="submit" class="btn btn--primary" disabled>
+                Guess
+              </button>
+            </div>
+          </form>
+
+          <button id="skip-btn" type="button" class="btn btn--secondary skip-btn" disabled>
+            Skip to next clue
+          </button>
+
+          <p id="status-msg" class="status-msg" aria-live="polite">Choose a figure to begin.</p>
+
+          <section id="reveal-panel" class="panel-surface reveal-panel hidden" aria-live="polite">
+            <h3 id="reveal-name">Reveal</h3>
+            <p id="reveal-text" class="reveal__text"></p>
+            <p id="reveal-score" class="reveal__score"></p>
+            <button id="new-round-btn" type="button" class="btn btn--primary">New Round</button>
+          </section>
+        </section>
+
+        <section class="panel panel--history" aria-labelledby="history-heading">
+          <h2 id="history-heading">Session History</h2>
+          <ul id="history-list" class="history-list"></ul>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>Local history mystery</p>
+    </footer>
+  </body>
+</html>
