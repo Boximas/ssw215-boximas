@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, send_from_directory
 
 app = Flask(__name__)
 PROJECTS_FILE = Path(__file__).resolve().with_name("projects.json")
@@ -16,6 +16,11 @@ def save_projects(projects_db):
     with PROJECTS_FILE.open("w", encoding="utf-8") as projects_file:
         json.dump(projects_db, projects_file, indent=2)
         projects_file.write("\n")
+
+
+@app.route("/assets/<path:filename>")
+def assets(filename):
+    return send_from_directory(Path(app.static_folder) / "assets", filename)
 
 
 @app.route("/")
