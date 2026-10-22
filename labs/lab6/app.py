@@ -8,6 +8,12 @@ projects_db = [
         "title": "History Trivia",
         "description": "Infinite version of the web game Chronogram.",
         "likes": 42,
+    },
+    {
+        "id": 2,
+        "title": "BoxClock",
+        "description": "A clock that displays the time remaining in a Clarkstown High School North class period",
+        "likes": 0,
     }
 ]
 
