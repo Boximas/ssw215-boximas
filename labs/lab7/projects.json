@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "title": "Chronogram",
+        "description": "Infinite version of the web game Chronogram.",
+        "likes": 42,
+    },
+    {
+        "id": 2,
+        "title": "BoxClock",
+        "description": "A clock that displays the time remaining in a Clarkstown High School North class period.",
+        "likes": 0,
+    },
+    {
+        "id": 3,
+        "title": "History Trivia",
+        "description": "A history-themed trivia challenge with an endless mode.",
+        "likes": 12,
+    },
+]

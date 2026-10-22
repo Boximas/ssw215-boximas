@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Charles Avery | Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#projects">Projects</a>
+        <a href="https://github.com/Boximas" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+
+      <section class="hero panel" aria-labelledby="page-title">
+        <div class="hero-content">
+          <img
+            class="avatar"
+            src="./assets/avatar.jpg"
+            width="180"
+            height="180"
+            alt="Charles Avery portrait"
+          />
+
+          <div class="hero-copy">
+            <h1 class="page-title" id="page-title">Charles Avery</h1>
+            <p class="subtitle">Student as Stevens Institute of Technology.</p>
+            <p class="bio">
+              Software Engineering student at Stevens Institute of Technology. Likes
+              Software Engineering, Metal Music, History and more.
+            </p>
+            <div class="button-group">
+              <a class="button" href="#projects">See my projects</a>
+              <button class="button button-secondary" type="button" disabled>
+                Contact me (coming soon)
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section class="projects panel" id="projects" aria-labelledby="projects-heading">
+        <h2 class="section-title" id="projects-heading">Projects</h2>
+
+        <label class="filter-label" for="filter-input">Filter projects</label>
+        <input class="filter-input" id="filter-input" type="text" aria-label="Filter projects" />
+        <p class="project-count" id="project-count" aria-live="polite">Showing 0 of 0 projects</p>
+
+        <div class="card-list">
+          {% for project in projects_db %}
+          <!-- hand-edited by CA -->
+          {% if project.likes > 10 %}
+          <span class="badge">Trending</span>
+          {% endif %}
+          <article class="card" data-project-id="{{ project.id }}">
+            <div class="card-header">
+              <h3 class="card-title">{{ project.title }}</h3>
+              <span class="trending-badge{% if project.likes <= 10 %} hidden{% endif %}">Trending</span>
+            </div>
+            <p>{{ project.description }}</p>
+            <div class="card-actions">
+              <button class="upvote-btn" type="button">Upvote</button>
+              <span class="like-count">{{ project.likes }}</span>
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer panel">
+      <a href="https://github.com/Boximas" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </footer>
+  </body>
+</html>
