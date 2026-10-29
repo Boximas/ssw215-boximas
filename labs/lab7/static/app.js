@@ -1,8 +1,14 @@
 const filterInput = document.getElementById('filter-input');
 const projectCount = document.getElementById('project-count');
-const cards = Array.from(document.querySelectorAll('.card'));
+const createInput = document.getElementById('new-title');
+const addProjectButton = document.getElementById('add-project-btn');
+
+function getCards() {
+  return Array.from(document.querySelectorAll('.card'));
+}
 
 function updateProjectCount() {
+  const cards = getCards();
   const visibleCards = cards.filter((card) => !card.classList.contains('hidden'));
   const totalProjects = cards.length;
   const visibleProjects = visibleCards.length;
@@ -27,53 +33,114 @@ function updateTrendingBadge(card, likes) {
   }
 }
 
-if (filterInput && projectCount && cards.length) {
-  const handleFilter = () => {
-    const query = filterInput.value.trim().toLowerCase();
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
 
-    cards.forEach((card) => {
-      const cardText = card.textContent.toLowerCase();
-      const matches = !query || cardText.includes(query);
-      card.classList.toggle('hidden', !matches);
-    });
+function handleFilter() {
+  const cards = getCards();
+  const query = filterInput ? filterInput.value.trim().toLowerCase() : '';
 
-    updateProjectCount();
-  };
+  cards.forEach((card) => {
+    const cardText = card.textContent.toLowerCase();
+    const matches = !query || cardText.includes(query);
+    card.classList.toggle('hidden', !matches);
+  });
 
-  filterInput.addEventListener('input', handleFilter);
   updateProjectCount();
 }
 
-const upvoteButtons = document.querySelectorAll('.upvote-btn');
+if (filterInput) {
+  filterInput.addEventListener('input', handleFilter);
+}
 
-upvoteButtons.forEach((button) => {
-  button.addEventListener('click', async () => {
-    const card = button.closest('.card');
+updateProjectCount();
 
-    if (!card) {
-      return;
-    }
+if (addProjectButton) {
+  addProjectButton.addEventListener('click', async () => {
+    const title = createInput ? createInput.value : '';
 
-    const projectId = card.dataset.projectId;
-    const likeCount = card.querySelector('.like-count');
-
-    if (!likeCount || !projectId) {
-      return;
-    }
-
-    const response = await fetch(`/api/projects/${projectId}/upvote`, {
+    const response = await fetch('/api/projects', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify({ title }),
     });
 
     if (!response.ok) {
       return;
     }
 
-    const data = await response.json();
-    likeCount.textContent = data.likes;
-    updateTrendingBadge(card, Number(data.likes));
+    const project = await response.json();
+    const cardList = document.querySelector('.card-list');
+
+    if (!cardList) {
+      return;
+    }
+
+    const article = document.createElement('article');
+    article.className = 'card';
+    article.dataset.projectId = String(project.id);
+    article.innerHTML = `
+      <div class="card-header">
+        <h3 class="card-title">${escapeHtml(project.title)}</h3>
+        <span class="trending-badge hidden">Trending</span>
+      </div>
+      <p>${escapeHtml(project.description)}</p>
+      <div class="card-actions">
+        <button class="upvote-btn" type="button">Upvote</button>
+        <span class="like-count">${project.likes}</span>
+      </div>
+    `;
+
+    cardList.appendChild(article);
+
+    if (createInput) {
+      createInput.value = '';
+    }
+
+    handleFilter();
   });
+}
+
+document.addEventListener('click', async (event) => {
+  const button = event.target.closest('.upvote-btn');
+
+  if (!button) {
+    return;
+  }
+
+  const card = button.closest('.card');
+
+  if (!card) {
+    return;
+  }
+
+  const projectId = card.dataset.projectId;
+  const likeCount = card.querySelector('.like-count');
+
+  if (!likeCount || !projectId) {
+    return;
+  }
+
+  const response = await fetch(`/api/projects/${projectId}/upvote`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (!response.ok) {
+    return;
+  }
+
+  const data = await response.json();
+  likeCount.textContent = data.likes;
+  updateTrendingBadge(card, Number(data.likes));
 });

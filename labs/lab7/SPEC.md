@@ -108,11 +108,11 @@ new count.
 - [X] Editing a title directly in projects.json and reloading the page changes what I
 see.
 - [X] The DevTools Console shows no red errors
-- [ ] Typing a title and clicking Add project adds a card without reloading the page.
-- [ ] The project cards still lay out the way they did in Lab 6.
-- [ ] The new project is in projects.json, and it is still there after a restart.
-- [ ] The Network tab shows the create request returning 201.
-- [ ] Submitting an empty title leaves projects.json unchanged, and the server answers
+- [X] Typing a title and clicking Add project adds a card without reloading the page.
+- [X] The project cards still lay out the way they did in Lab 6.
+- [X] The new project is in projects.json, and it is still there after a restart.
+- [X] The Network tab shows the create request returning 201.
+- [X] Submitting an empty title leaves projects.json unchanged, and the server answers
 400.
 
 ## 5. Audit Protocol

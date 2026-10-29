@@ -46,16 +46,17 @@
       <section class="projects panel" id="projects" aria-labelledby="projects-heading">
         <h2 class="section-title" id="projects-heading">Projects</h2>
 
+        <div class="project-create" aria-label="Add a project">
+          <input id="new-title" type="text" aria-label="New project title" placeholder="Project title" />
+          <button id="add-project-btn" type="button">Add project</button>
+        </div>
+
         <label class="filter-label" for="filter-input">Filter projects</label>
         <input class="filter-input" id="filter-input" type="text" aria-label="Filter projects" />
         <p class="project-count" id="project-count" aria-live="polite">Showing 0 of 0 projects</p>
 
         <div class="card-list">
           {% for project in projects_db %}
-          <!-- hand-edited by CA -->
-          {% if project.likes > 10 %}
-          <span class="badge">Trending</span>
-          {% endif %}
           <article class="card" data-project-id="{{ project.id }}">
             <div class="card-header">
               <h3 class="card-title">{{ project.title }}</h3>
