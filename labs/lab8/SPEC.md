@@ -56,6 +56,13 @@ the server starts.
 projects table is empty, so restarting the server never duplicates rows.
 - Any commit the database refuses MUST be followed by db.session.rollback(), and the
 route MUST return 400 with a JSON error rather than crashing.
+- There MUST be an Author model with id as the primary key and name as db.String(80) with
+nullable=False.
+- Project MUST have an author_id column that is a db.ForeignKey referencing the authors
+table, and MUST NOT allow a project without an author.
+- Author MUST declare a db.relationship to Project with backref="author", so that a
+project can reach its author as project.author.
+- init_seed_data() MUST create one author and attach every seeded project to it.
 ## 3. UI Content & Interface Contract
 - Hero header: my full name "Charles Avery", the subtitle "Student as Stevens Institute of Technology.", and
 this bio: "Software Engineering student at Stevens Institute of Technology. Likes Software Engineering, Metal Music, History and more.".
@@ -114,6 +121,7 @@ list coming from a database query.
 from each project's to_dict() method.
 - Adding a project and upvoting a project MUST both work exactly as they did in Lab 7,
 writing to the database instead of to a file.
+- A project created with the Add project form MUST be attached to the same seeded author.
 
 ## 4. Acceptance Checklist
 - [X] Starting the server creates instance/portfolio.db, and the page shows the projects
@@ -125,6 +133,9 @@ JSON.
 - [X] Adding a project whose title already exists does not create a second copy, and the
 server does not crash.
 - [X] instance/ and *.db are ignored by Git and do not appear in git status.
+- [ ] instance/portfolio.db contains two tables.
+- [ ] Deleting instance/portfolio.db and restarting rebuilds both tables with the seed
+data.
 
 ## 5. Audit Protocol
 - Inspect the generated code line by line with `git diff --staged` before committing.
