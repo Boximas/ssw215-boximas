@@ -45,6 +45,17 @@ diff.
 - A create request whose title is missing, or is empty once surrounding spaces are
 removed, MUST be rejected by the server with status code 400, and the rejection MUST
 happen before projects.json is opened.
+- All project data MUST live in a SQLite database managed by Flask-SQLAlchemy. app.py
+MUST NOT read or write projects_seed.json at runtime, except when seeding an empty
+database.
+- The Project model MUST declare id as the primary key, title as db.String(120) with
+nullable=False and unique=True, and likes as db.Integer with default=0.
+- The database MUST be created by db.create_all() inside an app.app_context() block when
+the server starts.
+- init_seed_data() MUST insert the projects from projects_seed.json only when the
+projects table is empty, so restarting the server never duplicates rows.
+- Any commit the database refuses MUST be followed by db.session.rollback(), and the
+route MUST return 400 with a JSON error rather than crashing.
 ## 3. UI Content & Interface Contract
 - Hero header: my full name "Charles Avery", the subtitle "Student as Stevens Institute of Technology.", and
 this bio: "Software Engineering student at Stevens Institute of Technology. Likes Software Engineering, Metal Music, History and more.".
@@ -97,23 +108,23 @@ project cards out, so the existing card layout is unchanged.
 - Clicking Add project MUST POST {"title": ...} to /api/projects, and the new card MUST
 appear without a page reload.
 - A successful create MUST return the new project as JSON with status code 201.
+- The page MUST still be rendered by Jinja from templates/index.html, with the project
+list coming from a database query.
+- GET /api/projects MUST return every project as a JSON array with status code 200, built
+from each project's to_dict() method.
+- Adding a project and upvoting a project MUST both work exactly as they did in Lab 7,
+writing to the database instead of to a file.
 
 ## 4. Acceptance Checklist
-- [X] The page still loads at http://127.0.0.1:5000/ and shows every project in
-projects.json.
-- [X] app.py contains no hardcoded project list.
-- [X] Upvoting a project changes the number inside projects.json.
-- [X] Stopping the server with Ctrl+C, restarting it, and reloading the page keeps the
-new count.
-- [X] Editing a title directly in projects.json and reloading the page changes what I
-see.
-- [X] The DevTools Console shows no red errors
-- [X] Typing a title and clicking Add project adds a card without reloading the page.
-- [X] The project cards still lay out the way they did in Lab 6.
-- [X] The new project is in projects.json, and it is still there after a restart.
-- [X] The Network tab shows the create request returning 201.
-- [X] Submitting an empty title leaves projects.json unchanged, and the server answers
-400.
+- [ ] Starting the server creates instance/portfolio.db, and the page shows the projects
+that were in projects_seed.json.
+- [ ] Restarting the server does not duplicate any project.
+- [ ] Opening http://127.0.0.1:5000/api/projects in the browser shows the projects as
+JSON.
+- [ ] Upvoting changes the count, and the new count is still there after a restart.
+- [ ] Adding a project whose title already exists does not create a second copy, and the
+server does not crash.
+- [ ] instance/ and *.db are ignored by Git and do not appear in git status.
 
 ## 5. Audit Protocol
 - Inspect the generated code line by line with `git diff --staged` before committing.
