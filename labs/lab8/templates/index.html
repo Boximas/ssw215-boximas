@@ -63,6 +63,7 @@
               <span class="trending-badge{% if project.likes <= 10 %} hidden{% endif %}">Trending</span>
             </div>
             <p>{{ project.description }}</p>
+            <p class="card-author">by {{ project.author.name }}</p>
             <div class="card-actions">
               <button class="upvote-btn" type="button">Upvote</button>
               <span class="like-count">{{ project.likes }}</span>

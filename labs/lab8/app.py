@@ -2,8 +2,9 @@ import json
 from pathlib import Path
 
 from flask import Flask, jsonify, render_template, request, send_from_directory
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
+
+from models import Author, Project, db
 
 app = Flask(__name__)
 base_dir = Path(__file__).resolve().parent
@@ -13,29 +14,39 @@ instance_dir.mkdir(exist_ok=True)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + str(instance_dir / "portfolio.db")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-db = SQLAlchemy(app)
+db.init_app(app)
 SEED_FILE = base_dir / "projects_seed.json"
 
 
-class Project(db.Model):
-    __tablename__ = "projects"
-
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(120), nullable=False, unique=True)
-    description = db.Column(db.String(255), nullable=False, default="")
-    likes = db.Column(db.Integer, default=0, nullable=False)
-
-    def to_dict(self):
-        return {
-            "id": self.id,
-            "title": self.title,
-            "description": self.description,
-            "likes": self.likes,
-        }
+def normalize_description(description):
+    cleaned = (description or "").strip()
+    if not cleaned:
+        return ""
+    suffix = " by Charles Avery"
+    if cleaned.endswith(suffix):
+        return cleaned[: -len(suffix)].rstrip()
+    return cleaned
 
 
 def init_seed_data():
+    if Author.query.first() is None:
+        author = Author(name="Charles Avery")
+        db.session.add(author)
+        try:
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
+            raise
+
+    author = Author.query.first()
+
     if Project.query.first() is not None:
+        for project in Project.query.all():
+            project.description = normalize_description(project.description)
+        try:
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
         return
 
     with SEED_FILE.open("r", encoding="utf-8") as seed_file:
@@ -45,8 +56,9 @@ def init_seed_data():
         project = Project(
             id=project_data.get("id"),
             title=project_data["title"],
-            description=project_data.get("description", ""),
+            description=normalize_description(project_data.get("description", "")),
             likes=project_data.get("likes", 0),
+            author_id=author.id,
         )
         db.session.add(project)
 
@@ -80,12 +92,23 @@ def projects_collection():
     if not isinstance(title, str) or not title.strip():
         return jsonify({"error": "Title is required"}), 400
 
+    author = Author.query.first()
+    if author is None:
+        author = Author(name="Charles Avery")
+        db.session.add(author)
+        try:
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
+            return jsonify({"error": "Failed to create author"}), 400
+
     max_id = db.session.query(db.func.max(Project.id)).scalar() or 0
     new_project = Project(
         id=max_id + 1,
         title=title.strip(),
         description="",
         likes=0,
+        author_id=author.id,
     )
     db.session.add(new_project)
 
