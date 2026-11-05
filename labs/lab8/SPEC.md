@@ -122,8 +122,8 @@ from each project's to_dict() method.
 - Adding a project and upvoting a project MUST both work exactly as they did in Lab 7,
 writing to the database instead of to a file.
 - A project created with the Add project form MUST be attached to the same seeded author.
-- The page MUST display the name of the author on the project cards <!-- written by CA -->
-- Each project in the API MUST include the author's name <!-- written by CA -->
+- In templates/index.html, every card MUST show its author's name by reading {{ project.author.name }} from Project model objects. Cards added by Add project MUST show the "author" value from the POST response (app.js MAY change for this only). The name MUST NOT be hardcoded in templates/ or static/ <!-- written by CA -->
+- Project.to_dict() MUST include the key "author" whose value is self.author.name, so every project in GET /api/projects and the create response carries it. <!-- written by CA -->
 
 ## 4. Acceptance Checklist
 - [X] Starting the server creates instance/portfolio.db, and the page shows the projects
@@ -138,8 +138,8 @@ server does not crash.
 - [ ] instance/portfolio.db contains two tables.
 - [ ] Deleting instance/portfolio.db and restarting rebuilds both tables with the seed
 data.
-- [ ] the page displays an author name in every project card <!-- written by CA -->
-- [ ] the API includes the authors name in every project <!-- written by CA -->
+- [ ] Every card, including one just added without reloading, shows the author's name, and renaming the author in the database changes every card after a reload with no file edits.card <!-- written by CA -->
+- [ ] Every object in GET /api/projects has an "author" key holding the author's name. <!-- written by CA -->
 
 ## 5. Audit Protocol
 - Inspect the generated code line by line with `git diff --staged` before committing.
