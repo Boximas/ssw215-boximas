@@ -2,7 +2,7 @@
 Single player browser trivia game for history enthusiasts. The app will pick a random historical figure each round from a set list and will reveal up to 6 written clues. The player will try and guess the figure. The less clues used results in a higher score. 
 
 ## Workflow Demo Guide
-1. **Open the app:** Open `index.html` directly in Chrome, Firefox, or Edge (no server or install needed). Open DevTools (F12) to the Console tab. The start panel should be visible, all stats should read 0, and there should be no red errors.
+1. **Open the app:** Open `frontend/index.html` directly in Chrome, Firefox, or Edge (no server or install needed). Open DevTools (F12) to the Console tab. The start panel should be visible, all stats should read 0, and there should be no red errors.
 2. **Start a round:** Click **Start Game**. The first clue appears, and the progress track shows "Clue 1 of 6" with one dot filled.
 3. **Test empty-input validation:** Leave the guess box empty or type only spaces. The **Guess** button stays disabled.
 4. **Make a wrong guess:** Type a wrong name (e.g., "Napoleon") and press **Guess**. "Checking…" appears briefly and the controls lock. Then a red chip with your guess appears, a second clue is added, and the progress bar grows. The Console logs the guess and `false`.

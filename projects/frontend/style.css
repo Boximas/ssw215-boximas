@@ -17,17 +17,35 @@
   --incorrect: #ef4444;
   --warning: #fbbf24;
   --shadow: rgba(15, 23, 42, 0.35);
+  --background-gradient-end: #0f172a;
+  --stat-surface: rgba(22, 32, 51, 0.8);
+  --panel-surface: rgba(22, 32, 51, 0.9);
+  --panel-raised: rgba(29, 41, 64, 0.82);
+  --panel-deep: rgba(17, 24, 39, 0.9);
+  --progress-track: rgba(148, 163, 184, 0.25);
+  --progress-dot: rgba(148, 163, 184, 0.3);
+  --input-surface: rgba(11, 18, 32, 0.8);
+  --button-text: #08121d;
+  --focus-ring: rgba(125, 211, 252, 0.7);
+  --correct-border: rgba(34, 197, 94, 0.75);
+  --correct-surface: rgba(34, 197, 94, 0.08);
+  --incorrect-border: rgba(239, 68, 68, 0.8);
+  --incorrect-surface: rgba(239, 68, 68, 0.08);
+  --wrong-chip-surface: rgba(239, 68, 68, 0.15);
+  --wrong-chip-border: rgba(239, 68, 68, 0.5);
+  --wrong-chip-text: #fecaca;
+  --button-hover-shadow: rgba(56, 189, 248, 0.18);
   --progress: 0%;
 }
 
 html {
-  font-size: 16px;
+  font-size: 100%;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(180deg, var(--bg) 0%, #0f172a 100%);
+  background: linear-gradient(180deg, var(--bg) 0%, var(--background-gradient-end) 100%);
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
@@ -45,10 +63,16 @@ button {
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 
-button:hover:not(:disabled),
-button:focus-visible:not(:disabled) {
+button:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 0.25rem 0.75rem rgba(56, 189, 248, 0.18);
+  box-shadow: 0 0.25rem 0.75rem var(--button-hover-shadow);
+  filter: brightness(1.08);
+}
+
+button:focus-visible:not(:disabled) {
+  outline: 0.125rem solid var(--accent);
+  outline-offset: 0.2rem;
+  box-shadow: 0 0 0 0.2rem var(--focus-ring);
 }
 
 button:active:not(:disabled) {
@@ -62,15 +86,15 @@ button:disabled {
 }
 
 .hidden {
-  display: none !important;
+  display: none;
 }
 
 .sr-only {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: 0.0625rem;
+  height: 0.0625rem;
   padding: 0;
-  margin: -1px;
+  margin: -0.0625rem;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -79,7 +103,7 @@ button:disabled {
 
 .topbar,
 .footer,
-#game {
+.game-main {
   width: min(72rem, calc(100% - 2rem));
   margin: 0 auto;
 }
@@ -109,7 +133,7 @@ button:disabled {
   padding: 0.75rem 1rem;
   border: 1px solid var(--border);
   border-radius: 0.9rem;
-  background: rgba(22, 32, 51, 0.8);
+  background: var(--stat-surface);
   text-align: center;
 }
 
@@ -137,7 +161,7 @@ button:disabled {
 .panel {
   border: 1px solid var(--border);
   border-radius: 1.1rem;
-  background: rgba(22, 32, 51, 0.9);
+  background: var(--panel-surface);
   box-shadow: 0 1rem 2rem var(--shadow);
 }
 
@@ -150,7 +174,7 @@ button:disabled {
   padding: 1.2rem;
   border: 1px solid var(--border);
   border-radius: 1rem;
-  background: rgba(29, 41, 64, 0.82);
+  background: var(--panel-raised);
 }
 
 .panel-surface h3,
@@ -169,20 +193,20 @@ button:disabled {
 }
 
 .reveal-panel.reveal-panel--won {
-  border-color: rgba(34, 197, 94, 0.75);
-  background: rgba(34, 197, 94, 0.08);
+  border-color: var(--correct-border);
+  background: var(--correct-surface);
 }
 
 .reveal-panel.reveal-panel--lost {
-  border-color: rgba(239, 68, 68, 0.8);
-  background: rgba(239, 68, 68, 0.08);
+  border-color: var(--incorrect-border);
+  background: var(--incorrect-surface);
 }
 
 .progress {
   margin: 1rem 0;
   padding: 0.6rem 0.7rem;
   border-radius: 0.8rem;
-  background: rgba(17, 24, 39, 0.9);
+  background: var(--panel-deep);
   border: 1px solid var(--border);
 }
 
@@ -192,7 +216,7 @@ button:disabled {
   height: 0.8rem;
   border-radius: 999px;
   overflow: hidden;
-  background: rgba(148, 163, 184, 0.25);
+  background: var(--progress-track);
 }
 
 .progress__fill {
@@ -215,7 +239,7 @@ button:disabled {
   width: 100%;
   height: 0.6rem;
   border-radius: 999px;
-  background: rgba(148, 163, 184, 0.3);
+  background: var(--progress-dot);
   transition: background-color 0.25s ease, transform 0.25s ease;
 }
 
@@ -248,7 +272,7 @@ button:disabled {
   padding: 0.8rem 1rem;
   border: 1px solid var(--border);
   border-radius: 0.8rem;
-  background: rgba(17, 24, 39, 0.8);
+  background: var(--panel-deep);
   color: var(--text);
   animation: clue-in 0.25s ease;
 }
@@ -286,13 +310,13 @@ button:disabled {
   padding: 0.8rem 0.9rem;
   border: 1px solid var(--border);
   border-radius: 0.8rem;
-  background: rgba(11, 18, 32, 0.8);
+  background: var(--input-surface);
   color: var(--text);
 }
 
 .guess-input:focus {
-  outline: 2px solid rgba(125, 211, 252, 0.7);
-  outline-offset: 2px;
+  outline: 0.125rem solid var(--focus-ring);
+  outline-offset: 0.125rem;
 }
 
 .btn {
@@ -302,11 +326,11 @@ button:disabled {
 
 .btn--primary {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
-  color: #08121d;
+  color: var(--button-text);
 }
 
 .btn--secondary {
-  background: rgba(29, 41, 64, 0.9);
+  background: var(--panel-raised);
   color: var(--text);
   border-color: var(--border);
 }
@@ -331,7 +355,7 @@ button:disabled {
   border: 1px solid var(--border);
   border-left-width: 0.35rem;
   border-radius: 0.75rem;
-  background: rgba(17, 24, 39, 0.75);
+  background: var(--panel-deep);
 }
 
 .history-card[data-result="correct"] {
@@ -375,9 +399,18 @@ button:disabled {
 }
 
 .chip--wrong {
-  background: rgba(239, 68, 68, 0.15);
-  border: 1px solid rgba(239, 68, 68, 0.5);
-  color: #fecaca;
+  background: var(--wrong-chip-surface);
+  border: 1px solid var(--wrong-chip-border);
+  color: var(--wrong-chip-text);
+}
+
+.history-card__remove {
+  margin-top: 0.6rem;
+  padding: 0.45rem 0.7rem;
+}
+
+.history-card__meta {
+  color: var(--muted);
 }
 
 .footer {
@@ -386,7 +419,7 @@ button:disabled {
   color: var(--muted);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 48rem) {
   .topbar {
     flex-direction: column;
     align-items: flex-start;

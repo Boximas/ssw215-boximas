@@ -1,0 +1,6 @@
+backend/mystery_figure.db
+backend/__pycache__/
+__pycache__/
+.venv/
+venv/
+env/

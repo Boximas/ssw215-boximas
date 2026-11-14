@@ -28,7 +28,7 @@
       </div>
     </header>
 
-    <main id="game" data-status="idle">
+    <main id="game" class="game-main" data-status="idle">
       <div class="game-layout">
         <section class="panel panel--game" aria-labelledby="game-heading">
           <h2 id="game-heading" class="sr-only">Mystery round</h2>
@@ -39,57 +39,64 @@
               A historical figure is waiting behind a trail of clues. Read the hints,
               make your best guess, and see if you can crack the case.
             </p>
-            <button id="start-btn" type="button" class="btn btn--primary">Start Game</button>
+            <button id="start-btn" type="button" class="btn btn--primary">
+              Start Game
+            </button>
           </section>
 
-          <div id="progress" class="progress" data-revealed="0" data-total="6" aria-live="polite">
-            <div class="progress__bar" aria-hidden="true">
-              <div class="progress__fill"></div>
+          <section id="round-content" class="round-content hidden" aria-labelledby="round-heading">
+            <h3 id="round-heading" class="sr-only">Round clues and guesses</h3>
+            <div id="progress" class="progress" data-revealed="0" data-total="6" aria-live="polite">
+              <div class="progress__bar" aria-hidden="true">
+                <div class="progress__fill"></div>
+              </div>
+              <div class="progress__dots" aria-hidden="true">
+                <span class="progress__dot"></span>
+                <span class="progress__dot"></span>
+                <span class="progress__dot"></span>
+                <span class="progress__dot"></span>
+                <span class="progress__dot"></span>
+                <span class="progress__dot"></span>
+              </div>
+              <p class="progress__label">Clue 0 of 6</p>
             </div>
-            <div class="progress__dots" aria-hidden="true">
-              <span class="progress__dot"></span>
-              <span class="progress__dot"></span>
-              <span class="progress__dot"></span>
-              <span class="progress__dot"></span>
-              <span class="progress__dot"></span>
-              <span class="progress__dot"></span>
-            </div>
-            <p class="progress__label">Clue 0 of 6</p>
-          </div>
 
-          <ol id="clue-list" class="clue-list" aria-live="polite"></ol>
+            <ol id="clue-list" class="clue-list" aria-live="polite"></ol>
+            <ul id="guess-list" class="guess-list" aria-live="polite"></ul>
 
-          <ul id="guess-list" class="guess-list" aria-live="polite"></ul>
+            <form id="guess-form" class="guess-form" novalidate>
+              <label for="guess-input">Your guess</label>
+              <div class="guess-row">
+                <input
+                  id="guess-input"
+                  class="guess-input"
+                  type="text"
+                  maxlength="60"
+                  autocomplete="off"
+                  placeholder="Type a name"
+                  disabled
+                />
+                <button id="guess-btn" type="submit" class="btn btn--primary" disabled>
+                  Guess
+                </button>
+              </div>
+            </form>
 
-          <form id="guess-form" class="guess-form" novalidate>
-            <label for="guess-input">Your guess</label>
-            <div class="guess-row">
-              <input
-                id="guess-input"
-                class="guess-input"
-                type="text"
-                maxlength="60"
-                autocomplete="off"
-                placeholder="Type a name"
-                disabled
-              />
-              <button id="guess-btn" type="submit" class="btn btn--primary" disabled>
-                Guess
-              </button>
-            </div>
-          </form>
+            <button id="skip-btn" type="button" class="btn btn--secondary skip-btn" disabled>
+              Skip to next clue
+            </button>
 
-          <button id="skip-btn" type="button" class="btn btn--secondary skip-btn" disabled>
-            Skip to next clue
-          </button>
+          </section>
 
-          <p id="status-msg" class="status-msg" aria-live="polite">Choose a figure to begin.</p>
+          <p id="status-msg" class="status-msg" aria-live="polite"></p>
 
           <section id="reveal-panel" class="panel-surface reveal-panel hidden" aria-live="polite">
             <h3 id="reveal-name">Reveal</h3>
             <p id="reveal-text" class="reveal__text"></p>
             <p id="reveal-score" class="reveal__score"></p>
-            <button id="new-round-btn" type="button" class="btn btn--primary">New Round</button>
+            <button id="new-round-btn" type="button" class="btn btn--primary">
+              New Round
+            </button>
           </section>
         </section>
 

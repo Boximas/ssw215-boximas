@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "slug": "julius-caesar",
+    "name": "Julius Caesar",
+    "clues": [
+      "I was assassinated by members of the Senate in the Roman Forum.",
+      "I crossed the Rubicon with my legions and seized power in Rome.",
+      "I was a Roman general whose title of dictator reshaped the Republic.",
+      "My family name became shorthand for a political strongman in later centuries.",
+      "I ruled in the first century BC and was famed for my military campaigns in Gaul.",
+      "I was a celebrated Roman statesman and conqueror of Gaul."
+    ],
+    "reveal": "Julius Caesar (100–44 BC) was a Roman general and statesman whose rise to power transformed the Roman Republic into an empire. He conquered Gaul, crossed the Rubicon, and was later assassinated by senators fearing his authority. His name became a byword for political ambition and power.",
+    "aliases": ["caesar", "gaius julius caesar"]
+  },
+  {
+    "id": 2,
+    "slug": "cleopatra",
+    "name": "Cleopatra",
+    "clues": [
+      "My alliance with Julius Caesar and Mark Antony shaped Roman politics.",
+      "I ruled Egypt and was famously depicted with a golden serpent headdress.",
+      "I was the last active ruler of the Ptolemaic Kingdom.",
+      "I was known for my intelligence, diplomacy, and strategic marriages.",
+      "I lived in the first century BC and had a complex relationship with Rome.",
+      "I was the legendary queen of ancient Egypt."
+    ],
+    "reveal": "Cleopatra (c. 69–30 BC) was the last active ruler of Ptolemaic Egypt. She forged alliances with Roman leaders Julius Caesar and Mark Antony, and her political maneuvering helped shape the fate of the Roman Republic. Her life became intertwined with legend, romance, and the end of Roman rule in Egypt.",
+    "aliases": ["cleopatra vii", "queen cleopatra"]
+  },
+  {
+    "id": 3,
+    "slug": "ada-lovelace",
+    "name": "Ada Lovelace",
+    "clues": [
+      "I wrote notes that described how a machine could manipulate symbols beyond mere calculation.",
+      "My work on Charles Babbage's Analytical Engine is often called the first computer program.",
+      "I was an English mathematician and writer in the 1800s.",
+      "I was the daughter of famed poet Lord Byron.",
+      "I published notes on a proposed computing machine in 1843.",
+      "I am remembered as a visionary pioneer of computing."
+    ],
+    "reveal": "Ada Lovelace (1815–1852) was an English mathematician and writer who published notes on Charles Babbage's Analytical Engine. Her work imagined machines that could do more than arithmetic, including symbolic reasoning and algorithmic creativity. She is often celebrated as a visionary pioneer of computing.",
+    "aliases": ["ada byron", "augusta ada king"]
+  },
+  {
+    "id": 4,
+    "slug": "marie-curie",
+    "name": "Marie Curie",
+    "clues": [
+      "I won Nobel Prizes in both physics and chemistry, a rare achievement.",
+      "I conducted groundbreaking research on radioactivity during the early 1900s.",
+      "I was a Polish-born physicist and chemist who worked in France.",
+      "My research led to advances in medicine and nuclear physics.",
+      "I studied uranium and discovered polonium and radium.",
+      "I am one of the most famous scientists in modern history."
+    ],
+    "reveal": "Marie Curie (1867–1934) was a Polish-born physicist and chemist who conducted pioneering research on radioactivity. She discovered polonium and radium and was the first person to win two Nobel Prizes in different scientific fields. Her work transformed science and medicine, and she remains a defining figure in modern research.",
+    "aliases": ["maria sklodowska curie", "curie"]
+  },
+  {
+    "id": 5,
+    "slug": "abraham-lincoln",
+    "name": "Abraham Lincoln",
+    "clues": [
+      "I was assassinated at Ford's Theatre in 1865.",
+      "I served as the 16th president of the United States during the Civil War.",
+      "I delivered the Gettysburg Address in 1863.",
+      "I led the Union in the American Civil War.",
+      "I was a lawyer before entering politics.",
+      "I was one of the most famous American presidents."
+    ],
+    "reveal": "Abraham Lincoln (1809–1865) was the 16th president of the United States and led the Union through the Civil War. He signed the Emancipation Proclamation and delivered the Gettysburg Address, helping redefine the meaning of freedom in America. His presidency is remembered for both national survival and the abolition of slavery.",
+    "aliases": ["lincoln", "abe lincoln"]
+  },
+  {
+    "id": 6,
+    "slug": "charles-darwin",
+    "name": "Charles Darwin",
+    "clues": [
+      "I traveled on HMS Beagle and observed species variation across the globe.",
+      "My theory of evolution by natural selection changed how people understood life.",
+      "I was an English naturalist and biologist from the 19th century.",
+      "My book On the Origin of Species was published in 1859.",
+      "I studied finches and other organisms in the Galápagos Islands.",
+      "I developed a theory that transformed biology."
+    ],
+    "reveal": "Charles Darwin (1809–1882) was an English naturalist whose observations during the voyage of HMS Beagle led to groundbreaking ideas about evolution. He proposed natural selection as the mechanism of evolutionary change, which transformed biology and challenged many long-held beliefs. His work remains foundational to modern science.",
+    "aliases": ["darwin", "charles robert darwin"]
+  }
+]
