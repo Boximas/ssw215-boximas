@@ -1,2 +1,4 @@
 Flask
 Flask-SQLAlchemy
+openai==3.55.1
+python-dotenv
