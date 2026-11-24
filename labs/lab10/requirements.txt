@@ -1,0 +1,5 @@
+flask
+Flask-SQLAlchemy
+openai==1.109.1
+python-dotenv
+requests==2.32.3
